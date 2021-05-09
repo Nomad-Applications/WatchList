@@ -10,5 +10,6 @@ class MainActivity : AppCompatActivity() {
 
         Log.e("fdsfds","dsfsfdsfds")
 
+        Log.e("oguzhan","oguzhan")
     }
 }
