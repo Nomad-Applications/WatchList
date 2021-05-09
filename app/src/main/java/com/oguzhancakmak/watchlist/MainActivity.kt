@@ -17,6 +17,14 @@ class MainActivity : AppCompatActivity() {
         Log.e("dasd","dljasdjdkl")
         Log.e("ahmdet","dljasdjdkl")
 
+        Log.e("ahmet","dljasdjdkl")
+        Log.e("dasd","dljasdjdkl")
+        Log.e("ahmdet","dljasdjdkl")
+
+        Log.e("ahmet","dljasdjdkl")
+        Log.e("dasd","dljasdjdkl")
+        Log.e("ahmdet","dljasdjdkl")
+
         Log.e("Tag","line12")
         Log.e("Tag","line13")
         Log.e("Tag","line14")
