@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.nomad.view">
+    package="com.nomadapps.watchlist.view">
 
     <application
         android:allowBackup="true"
@@ -9,10 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WatchList">
-        <activity android:name=".activities.SplashScreenActivity"></activity>
-        <activity android:name=".activities.DetailAcitivity" />
-        <activity android:name=".activities.FavoriteActivity" />
-        <activity android:name=".activities.MainActivity">
+        <activity android:name="com.nomadapps.watchlist.view.activities.SplashScreenActivity"></activity>
+        <activity android:name="com.nomadapps.watchlist.view.activities.DetailAcitivity" />
+        <activity android:name="com.nomadapps.watchlist.view.activities.FavoriteActivity" />
+        <activity android:name="com.nomadapps.watchlist.view.activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
