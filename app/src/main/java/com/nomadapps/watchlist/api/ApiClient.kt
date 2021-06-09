@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiClient {
 
-    private const val BASE_URL = "https://api.rawg.io/api/"
+    private const val BASE_URL = "https://api.themoviedb.org/3/"
     private val retrofitClient: Retrofit.Builder by lazy {
 
         val levelType: Level = if (BuildConfig.BUILD_TYPE.contentEquals("debug"))
