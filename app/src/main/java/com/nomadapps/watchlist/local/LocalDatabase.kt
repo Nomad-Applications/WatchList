@@ -4,11 +4,12 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.nomadapps.watchlist.model.FavoriteMovieEntity
 
 const val DB_VERSION = 1
 
 // entity
-@Database(entities = [], version = DB_VERSION, exportSchema = true)
+@Database(entities = [FavoriteMovieEntity::class], version = DB_VERSION, exportSchema = true)
 abstract class LocalDatabase : RoomDatabase() {
 
     abstract fun favoriteDao(): FavoriteDao

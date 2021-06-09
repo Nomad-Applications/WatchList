@@ -6,7 +6,7 @@ import com.nomadapps.watchlist.model.FavoriteMovieEntity
 
 @Dao
 interface FavoriteDao {
-    @Query("SELECT * FROM TABLENAME ORDER BY ID ASC")
+    @Query("SELECT * FROM FavoriteMovie ORDER BY qwe ASC")
     fun findAll(): LiveData<List<FavoriteMovieEntity>>
 
     @Delete
