@@ -1,4 +1,30 @@
 package com.nomadapps.watchlist.local
 
-class LocalDatabase {
+import android.content.Context
+import androidx.room.Database
+import androidx.room.Room
+import androidx.room.RoomDatabase
+
+const val DB_VERSION = 1
+
+// entity
+@Database(entities = [], version = DB_VERSION, exportSchema = true)
+abstract class LocalDatabase : RoomDatabase() {
+
+    abstract fun favoriteDao(): FavoriteDao
+
+    companion object {
+        private var INSTANCE: LocalDatabase? = null
+        fun getAppDatabase(context: Context): LocalDatabase? {
+            if (INSTANCE == null) {
+                INSTANCE = Room.databaseBuilder(
+                    context.applicationContext, LocalDatabase::class.java, "LocalDB"
+                )
+                    .allowMainThreadQueries()
+                    .build()
+            }
+
+            return INSTANCE
+        }
+    }
 }
