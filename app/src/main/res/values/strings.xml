@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">WatchList</string>
+    <string name="splash_icon">Splash Icon</string>
 </resources>

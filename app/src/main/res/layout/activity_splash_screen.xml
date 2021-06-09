@@ -7,26 +7,12 @@
     android:background="@color/black"
     tools:context=".activities.SplashScreenActivity">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="144dp"
-        android:fontFamily="@font/arbutus"
-        android:text="Watch List"
-        android:textAlignment="center"
-        android:textColor="#ff4155"
-        android:textSize="50sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageView
         android:id="@+id/splash_screen_icon"
         android:layout_width="200dp"
         android:layout_height="200dp"
+        android:contentDescription="@string/splash_icon"
         android:src="@drawable/ic_clapperboard"
-        android:contentDescription="Icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
