@@ -16,7 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.nomadapps.watchlist.view.activities.DetailAcitivity" />
+        <activity android:name="com.nomadapps.watchlist.view.activities.DetailActivity" />
         <activity android:name="com.nomadapps.watchlist.view.activities.FavoriteActivity" />
         <activity android:name="com.nomadapps.watchlist.view.activities.MainActivity"/>
 
