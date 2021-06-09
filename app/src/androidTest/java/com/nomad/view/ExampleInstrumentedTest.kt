@@ -1,4 +1,4 @@
-package com.oguzhancakmak.watchlist
+package com.nomad.view
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

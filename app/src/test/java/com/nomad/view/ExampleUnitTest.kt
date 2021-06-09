@@ -1,4 +1,4 @@
-package com.oguzhancakmak.watchlist
+package com.nomad.view
 
 import org.junit.Test
 
