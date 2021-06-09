@@ -13,20 +13,19 @@ object MovieListRepository {
     val movieList = MutableLiveData<MovieModel>()
 
     fun getMovieListApiCall(): MutableLiveData<MovieModel> {
-        Log.e("rere","response.toString()")
-        val call = ApiClient.apiInterface.getMovieList(API_KEY)
+        val call = ApiClient.apiInterface.getMovieList(API_KEY,1)
 
         call.enqueue(object : Callback<MovieModel> {
             override fun onFailure(call: Call<MovieModel>, t: Throwable) {
-                Log.v("DEBUG : ", t.message.toString())
+                Log.e("DEBUG:", t.message.toString())
             }
 
             override fun onResponse(
                 call: Call<MovieModel>,
                 response: Response<MovieModel>
             ) {
-                Log.e("rere",response.toString())
-                Log.v("DEBUG : ", response.body().toString())
+                Log.e("rere", response.toString())
+                Log.e("DEBUG:" , response.body().toString())
                 movieList.value = response.body()
 
             }

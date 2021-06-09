@@ -9,5 +9,5 @@ data class Result(
     val title: String,
     val release_date: String,
     val poster_path: String,
-    val vote_average: Int
+    val vote_average: Double
 )

@@ -11,7 +11,7 @@ interface RetrofitApiInterface {
 
     @GET("movie/popular")
     fun getMovieList(
-        @Query("api_key") apiKey: String
+        @Query("api_key") apiKey: String, @Query("page") page:Int
     ): Call<MovieModel>
 
     @GET("movie/{movie_id}")
