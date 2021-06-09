@@ -38,7 +38,7 @@ class MovieListViewPagerAdapter(
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = movieList[position]
-        Picasso.get().load("https://image.tmdb.org/t/p/w185"+currentItem.backdrop_path).into(holder.itemView.imageView)
+        Picasso.get().load("https://image.tmdb.org/t/p/w500"+currentItem.backdrop_path).into(holder.itemView.imageView)
 
         holder.itemView.setOnClickListener {
             onClickListener.onItemClick(currentItem)

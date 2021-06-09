@@ -44,7 +44,7 @@ class MovieListRecylerViewAdapter(
         holder.itemView.nameOfGame.text = currentItem.title
         holder.itemView.rating.text = "Rate - " + currentItem.vote_average
         holder.itemView.date.text = "Released Date - " + currentItem.release_date
-        Picasso.get().load("https://image.tmdb.org/t/p/w185"+currentItem.backdrop_path).into(holder.itemView.typeImageView)
+        Picasso.get().load("https://image.tmdb.org/t/p/w500"+currentItem.backdrop_path).into(holder.itemView.typeImageView)
 
         holder.itemView.rowLayout.setOnClickListener {
             onClickListener.onItemClick(currentItem)
