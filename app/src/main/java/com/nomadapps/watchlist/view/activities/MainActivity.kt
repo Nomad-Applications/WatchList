@@ -2,7 +2,6 @@ package com.nomadapps.watchlist.view.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -12,15 +11,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.nomadapps.watchlist.model.MovieModel
 import com.nomadapps.watchlist.view.R
-import com.nomadapps.watchlist.view.adapters.MovieListRecylerViewAdapter
 import com.nomadapps.watchlist.view.adapters.MovieListViewPagerAdapter
 import com.nomadapps.watchlist.viewmodel.MovieListViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import com.nomadapps.watchlist.model.Result
+import com.nomadapps.watchlist.view.adapters.MovieListRecyclerViewAdapter
 
 class MainActivity : AppCompatActivity() {
 
-    private var adapterRecyclerView: MovieListRecylerViewAdapter? = null
+    private var adapterRecyclerView: MovieListRecyclerViewAdapter? = null
     private var adapterViewPager: MovieListViewPagerAdapter? = null
     private var movieListRecyclerView: ArrayList<Result> = ArrayList()
     private var movieListViewPager: ArrayList<Result> = ArrayList()
@@ -86,12 +85,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setRecylcerViewAdapter() {
-        adapterRecyclerView = MovieListRecylerViewAdapter(
+        adapterRecyclerView = MovieListRecyclerViewAdapter(
             movieListRecyclerView,
-            object : MovieListRecylerViewAdapter.OnClickListener {
+            object : MovieListRecyclerViewAdapter.OnClickListener {
                 override fun onItemClick(position: Result) {
                     val intent = Intent(this@MainActivity, DetailActivity::class.java)
-                    intent.putExtra("key", position.id)
+                    intent.putExtra("key", position.id.toString())
                     startActivity(intent)
 
                 }

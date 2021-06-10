@@ -13,10 +13,10 @@ import kotlin.collections.ArrayList
 import com.nomadapps.watchlist.model.Result
 import com.nomadapps.watchlist.view.R
 
-class MovieListRecylerViewAdapter(
+class MovieListRecyclerViewAdapter(
     private var items: ArrayList<Result>,
     val onClickListener: OnClickListener
-) : RecyclerView.Adapter<MovieListRecylerViewAdapter.MyViewHolder>(), Filterable {
+) : RecyclerView.Adapter<MovieListRecyclerViewAdapter.MyViewHolder>(), Filterable {
 
     interface OnClickListener {
         fun onItemClick(position: Result)

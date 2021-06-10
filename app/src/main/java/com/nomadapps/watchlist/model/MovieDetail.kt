@@ -7,5 +7,6 @@ data class MovieDetail(
     val budget: String,
     val release_date: String,
     val poster_path: String,
-    val vote_average: Float
+    val vote_average: Double,
+    val backdrop_path: String
 )
