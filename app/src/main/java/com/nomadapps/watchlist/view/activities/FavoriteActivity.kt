@@ -1,9 +1,9 @@
 package com.nomadapps.watchlist.view.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -25,6 +25,7 @@ class FavoriteActivity : AppCompatActivity() {
         bottomNavBar()
         fetchFavorites()
     }
+
     private fun fetchFavorites() {
         favoriteMovieViewModel.allFavoriteMovieDetail.observe(this, Observer { gamelist ->
             adapter = FavoriteMovieListRecyclerViewAdapter(
@@ -32,18 +33,13 @@ class FavoriteActivity : AppCompatActivity() {
                 object : FavoriteMovieListRecyclerViewAdapter.OnClickListener {
 
                     override fun onItemClick(position: FavoriteMovieEntity) {
-                        val intent = Intent(this@FavoriteActivity,DetailActivity::class.java)
+                        val intent = Intent(this@FavoriteActivity, DetailActivity::class.java)
                         intent.putExtra("key", position.id.toString())
                         startActivity(intent)
-
                     }
-
                 })
-
             showEmptyError()
             searchFilter()
-
-
         })
     }
 

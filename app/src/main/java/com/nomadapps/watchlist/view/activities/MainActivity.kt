@@ -10,12 +10,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.nomadapps.watchlist.model.MovieModel
+import com.nomadapps.watchlist.model.Result
 import com.nomadapps.watchlist.view.R
+import com.nomadapps.watchlist.view.adapters.MovieListRecyclerViewAdapter
 import com.nomadapps.watchlist.view.adapters.MovieListViewPagerAdapter
 import com.nomadapps.watchlist.viewmodel.MovieListViewModel
 import kotlinx.android.synthetic.main.activity_main.*
-import com.nomadapps.watchlist.model.Result
-import com.nomadapps.watchlist.view.adapters.MovieListRecyclerViewAdapter
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity() {
         bottomNavBar()
         fetchGameList()
     }
-
 
 
     private fun fetchGameList() {
@@ -57,6 +56,7 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
     private fun showEmptyError() {
         adapterRecyclerView!!.registerAdapterDataObserver(object :
             RecyclerView.AdapterDataObserver() {
@@ -90,13 +90,11 @@ class MainActivity : AppCompatActivity() {
             object : MovieListRecyclerViewAdapter.OnClickListener {
                 override fun onItemClick(position: Result) {
                     val intent = Intent(this@MainActivity, DetailActivity::class.java)
-                    intent.putExtra("key", position.id.toString())
+                    val temp: String = position.id.toString()
+                    intent.putExtra("key", temp)
                     startActivity(intent)
-
                 }
-
             })
-
         recyclerview.isNestedScrollingEnabled = false
     }
 
@@ -106,11 +104,10 @@ class MainActivity : AppCompatActivity() {
             object : MovieListViewPagerAdapter.OnClickListener {
                 override fun onItemClick(position: Result) {
                     val intent = Intent(this@MainActivity, DetailActivity::class.java)
-                    intent.putExtra("key", position.id)
+                    val temp: String = position.id.toString()
+                    intent.putExtra("key", temp)
                     startActivity(intent)
-
                 }
-
             })
         viewPager.adapter = adapterViewPager
         worm_dots_indicator.setViewPager2(viewPager)
@@ -139,7 +136,6 @@ class MainActivity : AppCompatActivity() {
 
         })
     }
-
 
 
     private fun bottomNavBar() {

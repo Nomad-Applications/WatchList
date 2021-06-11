@@ -25,8 +25,6 @@ object MovieDetailRepository {
                 call: Call<MovieDetail>,
                 response: Response<MovieDetail>
             ) {
-                Log.e("vava", response.toString())
-                Log.v("DEBUG : ", response.body().toString())
                 gameDetail.value = response.body()
 
             }

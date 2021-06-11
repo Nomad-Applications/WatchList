@@ -20,5 +20,9 @@ interface RetrofitApiInterface {
         @Query("api_key") apiKey: String
     ): Call<MovieDetail>
 
-
+    @GET("movie/{movie_id}/similar")
+    fun getMoreLikeThisList(
+        @Path("movie_id") id: Int,
+        @Query("api_key") apiKey: String,
+    ): Call<MovieModel>
 }

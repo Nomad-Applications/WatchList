@@ -3,46 +3,42 @@ package com.nomadapps.watchlist.view.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.nomadapps.watchlist.model.MovieModel
+import com.nomadapps.watchlist.model.Result
+import com.nomadapps.watchlist.view.R
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.custom_row_design_more.view.*
 
-/*class MoreLikeThisRecyclerViewAdapter(
-    private val categoryList: List<CategoryEntity>,
-    private val onClickListenerCategory: OnClickListenerCategory
-) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
+class MoreLikeThisRecyclerViewAdapter(
+    private val items: MovieModel,
+    private val onClickListenerCategory: OnClickListener
+) : RecyclerView.Adapter<MoreLikeThisRecyclerViewAdapter.ViewHolder>() {
 
-    interface OnClickListenerCategory {
-        fun onItemClick(categoryName: String)
+    interface OnClickListener {
+        fun onItemClick(position: Result)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.row_design_category, parent, false)
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.custom_row_design_more, parent, false)
         return ViewHolder(view)
     }
 
     override fun getItemCount(): Int {
-        return categoryList.size
+        return items.results.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemView.setOnClickListener {
-            onClickListenerCategory.onItemClick(categoryList[position].strCategory)
+            onClickListenerCategory.onItemClick(items.results[position])
         }
-        return holder.bind(categoryList[position])
+        val currentItem = items.results[position]
+        Picasso.get().load("https://image.tmdb.org/t/p/w500" + currentItem.poster_path)
+            .into(holder.itemView.moreImageView)
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-        private var categoryImage = itemView.findViewById<ImageView>(R.id.category_image)
-        private var categoryName = itemView.findViewById<TextView>(R.id.category_name)
-        fun bind(categoryBind: CategoryEntity) {
-
-            categoryName.text = categoryBind.strCategory
-            Picasso.get().load(categoryBind.strCategoryThumb).into(categoryImage)
-        }
-
     }
-}*/
+}

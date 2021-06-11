@@ -11,9 +11,10 @@ import retrofit2.Response
 object MovieListRepository {
     private const val API_KEY = "76d1caf3e6b83eaaa662ea3bb10873ed"
     val movieList = MutableLiveData<MovieModel>()
+    val moreLikeThisList = MutableLiveData<MovieModel>()
 
     fun getMovieListApiCall(): MutableLiveData<MovieModel> {
-        val call = ApiClient.apiInterface.getMovieList(API_KEY,1)
+        val call = ApiClient.apiInterface.getMovieList(API_KEY, 1)
 
         call.enqueue(object : Callback<MovieModel> {
             override fun onFailure(call: Call<MovieModel>, t: Throwable) {
@@ -24,13 +25,31 @@ object MovieListRepository {
                 call: Call<MovieModel>,
                 response: Response<MovieModel>
             ) {
-                Log.e("rere", response.toString())
-                Log.e("DEBUG:" , response.body().toString())
                 movieList.value = response.body()
 
             }
         })
 
         return movieList
+    }
+
+    fun getMoreLikeThisListApiCall(id: String): MutableLiveData<MovieModel> {
+        val call = ApiClient.apiInterface.getMoreLikeThisList(id.toInt(), API_KEY)
+
+        call.enqueue(object : Callback<MovieModel> {
+            override fun onFailure(call: Call<MovieModel>, t: Throwable) {
+                Log.e("getMoreLikeThisListApi", t.message.toString())
+            }
+
+            override fun onResponse(
+                call: Call<MovieModel>,
+                response: Response<MovieModel>
+            ) {
+                moreLikeThisList.value = response.body()
+
+            }
+        })
+
+        return moreLikeThisList
     }
 }
