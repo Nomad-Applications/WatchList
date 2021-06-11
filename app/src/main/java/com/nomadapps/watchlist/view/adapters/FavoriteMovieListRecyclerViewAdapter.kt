@@ -42,12 +42,14 @@ class FavoriteMovieListRecyclerViewAdapter(
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = gameList[position]
-        holder.itemView.nameOfGame.text = currentItem.title
-        holder.itemView.rating.text = "Rate - " + currentItem.vote_average.toString()
-        holder.itemView.date.text = "Released Date - " + currentItem.release_date
+        holder.itemView.nameOfMovie.text = currentItem.title
+        //holder.itemView.rating.text = "Rate - " + currentItem.vote_average.toString()
+        //holder.itemView.date.text = "Released Date - " + currentItem.release_date
+        holder.itemView.tvSearchMovieDescription.text = currentItem.overview
         Picasso.get().load("https://image.tmdb.org/t/p/w500"+currentItem.backdrop_path).into(holder.itemView.typeImageView)
+        Picasso.get().load("https://image.tmdb.org/t/p/w500"+currentItem.poster_path).into(holder.itemView.ivSearchPoster)
 
-        holder.itemView.rowLayout.setOnClickListener {
+        holder.itemView.rowLayoutList.setOnClickListener {
             onClickListener.onItemClick(currentItem)
         }
 

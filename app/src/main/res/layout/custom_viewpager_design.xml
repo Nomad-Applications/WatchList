@@ -19,4 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:scaleType="fitXY"/>
 
+
+    <!-- text, yuvarlak dene-->
+
 </androidx.constraintlayout.widget.ConstraintLayout>

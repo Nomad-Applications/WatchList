@@ -96,6 +96,8 @@ class MainActivity : AppCompatActivity() {
                 }
 
             })
+
+        recyclerview.isNestedScrollingEnabled = false
     }
 
     private fun setViewPagerAdapter() {

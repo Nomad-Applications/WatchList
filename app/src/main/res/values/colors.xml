@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="colorGray">#e5e5e5</color>
     <color name="gray">#b3b3b3</color>
+    <color name="shimmer_grey_color">#dddddd</color>
 </resources>

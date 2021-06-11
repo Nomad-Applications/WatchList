@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nomadapps.watchlist.view">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
@@ -18,7 +19,9 @@
         </activity>
         <activity android:name="com.nomadapps.watchlist.view.activities.DetailActivity" />
         <activity android:name="com.nomadapps.watchlist.view.activities.FavoriteActivity" />
-        <activity android:name="com.nomadapps.watchlist.view.activities.MainActivity"/>
+        <activity
+            android:name="com.nomadapps.watchlist.view.activities.MainActivity"
+            android:windowSoftInputMode="adjustPan" />
 
 
         <meta-data
