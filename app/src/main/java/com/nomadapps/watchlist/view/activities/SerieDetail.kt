@@ -27,6 +27,7 @@ class SerieDetail : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_serie_detail)
         val serieResult: SerieResult? = intent.getParcelableExtra<SerieResult>("key")
+
         favoriteMovieViewModel = ViewModelProvider(this)[FavoriteViewModel::class.java]
         serieListViewModel = ViewModelProvider(this)[MovieListViewModel::class.java]
 
@@ -78,7 +79,7 @@ class SerieDetail : AppCompatActivity() {
                 object : SeriesSimilarShowAdapter.OnClickListener {
                     override fun onItemClick(position: SerieResult) {
                         val intent = Intent(this@SerieDetail, SerieDetail::class.java)
-                        intent.putExtra("key", position.id.toString())
+                        intent.putExtra("key", position)
                         startActivity(intent)
 
                     }
@@ -116,5 +117,11 @@ class SerieDetail : AppCompatActivity() {
             }
 
         })
+    }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this@SerieDetail, SerieActivity::class.java)
+        startActivity(intent)
+        overridePendingTransition(0, 0)
     }
 }

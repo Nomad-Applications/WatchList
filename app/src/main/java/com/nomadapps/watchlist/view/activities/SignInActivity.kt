@@ -28,9 +28,10 @@ class SignInActivity : AppCompatActivity() {
         button.setOnClickListener {
             email = editTextEmail.text.toString()
             pass = editTextPassword.text.toString()
-            if(email.isNotEmpty() || pass.isNotEmpty()){
+            if(email.isNotEmpty() && pass.isNotEmpty()){
                 signIn(email, pass)
             }else{
+
                 Toast.makeText(baseContext, "Email or Password cannot be empty",
                     Toast.LENGTH_SHORT).show()
             }
@@ -57,13 +58,24 @@ class SignInActivity : AppCompatActivity() {
                     overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
 
                 } else {
+                    if(!email.isValidEmail()){
+                        Toast.makeText(baseContext, "Email is not valid",
+                            Toast.LENGTH_SHORT).show()
+                    }else if(password.length< 6){
+                        Toast.makeText(baseContext, "Password length must be at least 6 characters",
+                            Toast.LENGTH_SHORT).show()
+                    }else{
+                        Toast.makeText(baseContext, "Please Try Again",
+                            Toast.LENGTH_SHORT).show()
+                    }
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithEmail:failure", task.exception)
-                    Toast.makeText(baseContext, "Please Try Again",
-                        Toast.LENGTH_SHORT).show()
+
 
                 }
             }
 
     }
+    fun String.isValidEmail() =
+        isNotEmpty() && android.util.Patterns.EMAIL_ADDRESS.matcher(this).matches()
 }
