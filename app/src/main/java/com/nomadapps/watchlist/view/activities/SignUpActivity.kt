@@ -19,7 +19,15 @@ class SignUpActivity : AppCompatActivity() {
         setContentView(R.layout.activity_sign_up)
         auth = Firebase.auth
         button.setOnClickListener {
-            createAccount(editTextEmail.text.toString(),editTextPassword.text.toString())
+            val email : String? = editTextEmail.text.toString()
+            val pass : String ?= editTextPassword.text.toString()
+            if(email!=null && pass!=null){
+                createAccount(email,pass)
+            }else{
+                Toast.makeText(baseContext, "Email or Password cannot be empty",
+                    Toast.LENGTH_SHORT).show()
+            }
+
         }
         textView3.setOnClickListener {
             val i = Intent(this, SignInActivity::class.java)

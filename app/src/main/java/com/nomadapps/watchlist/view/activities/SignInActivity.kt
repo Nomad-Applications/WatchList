@@ -10,7 +10,11 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.nomadapps.watchlist.view.R
-import kotlinx.android.synthetic.main.activity_sign_in.*
+import kotlinx.android.synthetic.main.activity_sign_in.button
+import kotlinx.android.synthetic.main.activity_sign_in.editTextEmail
+import kotlinx.android.synthetic.main.activity_sign_in.editTextPassword
+import kotlinx.android.synthetic.main.activity_sign_in.textView3
+
 
 class SignInActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
@@ -19,7 +23,15 @@ class SignInActivity : AppCompatActivity() {
         setContentView(R.layout.activity_sign_in)
         auth = Firebase.auth
         button.setOnClickListener {
-            signIn(editTextEmail.text.toString(),editTextPassword.text.toString())
+            val email : String? = editTextEmail.text.toString()
+            val pass : String ?= editTextPassword.text.toString()
+            if(email!=null && pass!=null){
+                signIn(email,pass)
+            }else{
+                Toast.makeText(baseContext, "Email or Password cannot be empty",
+                    Toast.LENGTH_SHORT).show()
+            }
+
         }
         textView3.setOnClickListener {
             val i = Intent(this, SignUpActivity::class.java)
