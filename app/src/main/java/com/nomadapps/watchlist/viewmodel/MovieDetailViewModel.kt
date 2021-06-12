@@ -12,4 +12,5 @@ class MovieDetailViewModel : ViewModel() {
         movieDetailLiveData = MovieDetailRepository.getMovieDetailApiCall(id)
         return movieDetailLiveData
     }
+
 }

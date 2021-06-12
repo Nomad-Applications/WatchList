@@ -2,6 +2,7 @@ package com.nomadapps.watchlist.api
 
 import com.nomadapps.watchlist.model.MovieDetail
 import com.nomadapps.watchlist.model.MovieModel
+import com.nomadapps.watchlist.model.SerieModel
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -25,4 +26,15 @@ interface RetrofitApiInterface {
         @Path("movie_id") id: Int,
         @Query("api_key") apiKey: String,
     ): Call<MovieModel>
+
+    @GET("tv/{tv_id}/similar")
+    fun getSimilarShows(
+        @Path("tv_id") id: Int,
+        @Query("api_key") apiKey: String,
+    ): Call<SerieModel>
+
+    @GET("tv/popular")
+    fun getSerieList(
+        @Query("api_key") apiKey: String, @Query("page") page:Int
+    ): Call<SerieModel>
 }

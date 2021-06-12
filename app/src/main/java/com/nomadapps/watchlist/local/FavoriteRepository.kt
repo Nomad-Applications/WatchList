@@ -14,4 +14,6 @@ class FavoriteRepository(private val favoriteDao: FavoriteDao) {
     fun deleteFavoriteMovieDetail(favoriteMovieEntity: FavoriteMovieEntity) {
         favoriteDao.delete(favoriteMovieEntity)
     }
+
+
 }

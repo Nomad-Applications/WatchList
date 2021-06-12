@@ -53,9 +53,9 @@ class DetailActivity : AppCompatActivity() {
                 button_detail_add_favorite.setOnClickListener {
                     val temp = FavoriteMovieEntity(
                         movielist.id,
+                        "movie",
                         movielist.title,
                         movielist.overview,
-                        movielist.budget,
                         movielist.release_date,
                         movielist.poster_path,
                         movielist.vote_average,

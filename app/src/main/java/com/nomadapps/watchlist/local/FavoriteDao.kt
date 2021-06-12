@@ -14,4 +14,5 @@ interface FavoriteDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(favoriteMovieEntity: FavoriteMovieEntity)
+
 }

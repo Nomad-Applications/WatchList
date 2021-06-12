@@ -12,12 +12,14 @@ class FavoriteViewModel(application: Application) : AndroidViewModel(application
 
     val allFavoriteMovieDetail: LiveData<List<FavoriteMovieEntity>>
 
+
     private val repository: FavoriteRepository
 
     init {
         val favoriteDao = LocalDatabase.getAppDatabase(application)?.favoriteDao()
         repository = FavoriteRepository(favoriteDao!!)
         allFavoriteMovieDetail = repository.allFavoriteDetail
+
     }
 
     fun insertFavoriteMovieDetail(favoriteMovieEntity: FavoriteMovieEntity) {
@@ -31,5 +33,6 @@ class FavoriteViewModel(application: Application) : AndroidViewModel(application
             repository.deleteFavoriteMovieDetail(favoriteMovieEntity)
         }
     }
+
 
 }

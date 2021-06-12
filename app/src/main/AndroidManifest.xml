@@ -3,6 +3,7 @@
     package="com.nomadapps.watchlist.view">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,19 +11,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WatchList">
-        <activity android:name="com.nomadapps.watchlist.view.activities.SplashScreenActivity">
+        <activity android:name=".activities.SignInActivity"/>
+        <activity android:name=".activities.SignUpActivity" />
+        <activity android:name=".activities.SerieDetail" />
+        <activity android:name=".activities.SerieActivity"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".activities.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.nomadapps.watchlist.view.activities.DetailActivity" />
-        <activity android:name="com.nomadapps.watchlist.view.activities.FavoriteActivity" />
+        <activity android:name=".activities.DetailActivity" />
+        <activity android:name=".activities.FavoriteActivity"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
-            android:name="com.nomadapps.watchlist.view.activities.MainActivity"
+            android:name=".activities.MovieActivity"
             android:windowSoftInputMode="adjustPan" />
-
 
         <meta-data
             android:name="preloaded_fonts"

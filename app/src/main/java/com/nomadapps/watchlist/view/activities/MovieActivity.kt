@@ -17,7 +17,7 @@ import com.nomadapps.watchlist.view.adapters.MovieListViewPagerAdapter
 import com.nomadapps.watchlist.viewmodel.MovieListViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MovieActivity : AppCompatActivity() {
 
     private var adapterRecyclerView: MovieListRecyclerViewAdapter? = null
     private var adapterViewPager: MovieListViewPagerAdapter? = null
@@ -89,7 +89,7 @@ class MainActivity : AppCompatActivity() {
             movieListRecyclerView,
             object : MovieListRecyclerViewAdapter.OnClickListener {
                 override fun onItemClick(position: Result) {
-                    val intent = Intent(this@MainActivity, DetailActivity::class.java)
+                    val intent = Intent(this@MovieActivity, DetailActivity::class.java)
                     val temp: String = position.id.toString()
                     intent.putExtra("key", temp)
                     startActivity(intent)
@@ -103,7 +103,7 @@ class MainActivity : AppCompatActivity() {
             movieListViewPager,
             object : MovieListViewPagerAdapter.OnClickListener {
                 override fun onItemClick(position: Result) {
-                    val intent = Intent(this@MainActivity, DetailActivity::class.java)
+                    val intent = Intent(this@MovieActivity, DetailActivity::class.java)
                     val temp: String = position.id.toString()
                     intent.putExtra("key", temp)
                     startActivity(intent)
@@ -146,7 +146,13 @@ class MainActivity : AppCompatActivity() {
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.navigation_favorites -> {
-                    val intent = Intent(this@MainActivity, FavoriteActivity::class.java)
+                    val intent = Intent(this@MovieActivity, FavoriteActivity::class.java)
+                    startActivity(intent)
+                    overridePendingTransition(0, 0)
+                    return@setOnNavigationItemSelectedListener true
+                }
+                R.id.navigation_series -> {
+                    val intent = Intent(this@MovieActivity, SerieActivity::class.java)
                     startActivity(intent)
                     overridePendingTransition(0, 0)
                     return@setOnNavigationItemSelectedListener true

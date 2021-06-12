@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.nomadapps.watchlist.local.FavoriteViewModel
 import com.nomadapps.watchlist.model.FavoriteMovieEntity
+import com.nomadapps.watchlist.model.SerieResult
 import com.nomadapps.watchlist.view.R
 import com.nomadapps.watchlist.view.adapters.FavoriteMovieListRecyclerViewAdapter
 import kotlinx.android.synthetic.main.activity_favorite.*
@@ -33,9 +34,25 @@ class FavoriteActivity : AppCompatActivity() {
                 object : FavoriteMovieListRecyclerViewAdapter.OnClickListener {
 
                     override fun onItemClick(position: FavoriteMovieEntity) {
-                        val intent = Intent(this@FavoriteActivity, DetailActivity::class.java)
-                        intent.putExtra("key", position.id.toString())
-                        startActivity(intent)
+                        if (position.type == "movie") {
+                            val intent = Intent(this@FavoriteActivity, DetailActivity::class.java)
+                            intent.putExtra("key", position.id.toString())
+                            startActivity(intent)
+                        } else {
+                            val intent = Intent(this@FavoriteActivity, SerieDetail::class.java)
+                            val temp: SerieResult = SerieResult(
+                                position.id,
+                                position.title,
+                                position.release_date,
+                                position.poster_path,
+                                position.vote_average,
+                                position.backdrop_path,
+                                position.overview
+                            )
+                            intent.putExtra("key", temp)
+                            startActivity(intent)
+                        }
+
                     }
                 })
             showEmptyError()
@@ -93,7 +110,13 @@ class FavoriteActivity : AppCompatActivity() {
         bottom_navigation_bar.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.navigation_homePage -> {
-                    val intent = Intent(this@FavoriteActivity, MainActivity::class.java)
+                    val intent = Intent(this@FavoriteActivity, MovieActivity::class.java)
+                    startActivity(intent)
+                    overridePendingTransition(0, 0)
+                    return@setOnNavigationItemSelectedListener true
+                }
+                R.id.navigation_series -> {
+                    val intent = Intent(this@FavoriteActivity, SerieActivity::class.java)
                     startActivity(intent)
                     overridePendingTransition(0, 0)
                     return@setOnNavigationItemSelectedListener true
@@ -110,7 +133,7 @@ class FavoriteActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        val intent = Intent(this@FavoriteActivity, MainActivity::class.java)
+        val intent = Intent(this@FavoriteActivity, MovieActivity::class.java)
         startActivity(intent)
         overridePendingTransition(0, 0)
     }
