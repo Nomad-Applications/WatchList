@@ -14,19 +14,22 @@ import kotlinx.android.synthetic.main.activity_sign_in.button
 import kotlinx.android.synthetic.main.activity_sign_in.editTextEmail
 import kotlinx.android.synthetic.main.activity_sign_in.editTextPassword
 import kotlinx.android.synthetic.main.activity_sign_in.textView3
+import kotlinx.android.synthetic.main.activity_sign_up.*
 
 
 class SignInActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
+    lateinit var pass : String
+    lateinit var email : String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
         auth = Firebase.auth
         button.setOnClickListener {
-            val email : String? = editTextEmail.text.toString()
-            val pass : String ?= editTextPassword.text.toString()
-            if(email!=null && pass!=null){
-                signIn(email,pass)
+            email = editTextEmail.text.toString()
+            pass = editTextPassword.text.toString()
+            if(email.isNotEmpty() || pass.isNotEmpty()){
+                signIn(email, pass)
             }else{
                 Toast.makeText(baseContext, "Email or Password cannot be empty",
                     Toast.LENGTH_SHORT).show()

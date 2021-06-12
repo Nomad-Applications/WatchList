@@ -14,15 +14,17 @@ import kotlinx.android.synthetic.main.activity_sign_up.*
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
+    lateinit var pass : String
+    lateinit var email : String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
         auth = Firebase.auth
         button.setOnClickListener {
-            val email : String? = editTextEmail.text.toString()
-            val pass : String ?= editTextPassword.text.toString()
-            if(email!=null && pass!=null){
-                createAccount(email,pass)
+             email = editTextEmail.text.toString()
+             pass = editTextPassword.text.toString()
+            if(email.isNotEmpty() || pass.isNotEmpty()){
+                createAccount(email, pass)
             }else{
                 Toast.makeText(baseContext, "Email or Password cannot be empty",
                     Toast.LENGTH_SHORT).show()
