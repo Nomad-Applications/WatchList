@@ -76,7 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
-        android:backgroundTint="@drawable/adapter_contanier"
+        android:background="@drawable/adapter_contanier"
         android:text="Continue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
