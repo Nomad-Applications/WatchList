@@ -7,21 +7,21 @@ import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
-import com.nomadapps.watchlist.model.SerieResult
+import com.nomadapps.watchlist.model.SeriesResult
 import com.nomadapps.watchlist.view.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.custom_row_design.view.*
 
 class SerieListRecyclerViewAdapter(
-    private var items: ArrayList<SerieResult>,
+    private var items: ArrayList<SeriesResult>,
     val onClickListener: OnClickListener
 ) : RecyclerView.Adapter<SerieListRecyclerViewAdapter.MyViewHolder>(), Filterable {
 
     interface OnClickListener {
-        fun onItemClick(position: SerieResult)
+        fun onItemClick(position: SeriesResult)
     }
 
-    var serieList = ArrayList<SerieResult>()
+    var serieList = ArrayList<SeriesResult>()
 
     init {
         serieList = items
@@ -64,7 +64,7 @@ class SerieListRecyclerViewAdapter(
                 if (charSearch.isEmpty()) {
                     serieList = items
                 } else {
-                    val resultList = ArrayList<SerieResult>()
+                    val resultList = ArrayList<SeriesResult>()
                     for (row in items) {
                         if (row.name.lowercase().contains(charSearch.lowercase())) {
                             resultList.add(row)
@@ -80,7 +80,7 @@ class SerieListRecyclerViewAdapter(
             @Suppress("UNCHECKED_CAST")
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
                 if (results != null) {
-                    serieList = results.values as ArrayList<SerieResult>
+                    serieList = results.values as ArrayList<SeriesResult>
                     notifyDataSetChanged()
                 }
 

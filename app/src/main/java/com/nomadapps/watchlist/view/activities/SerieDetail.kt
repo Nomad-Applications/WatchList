@@ -1,10 +1,10 @@
 package com.nomadapps.watchlist.view.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -26,19 +26,19 @@ class SerieDetail : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_serie_detail)
-        val serieResult: SerieResult? = intent.getParcelableExtra<SerieResult>("key")
+        val seriesResult: SeriesResult? = intent.getParcelableExtra<SeriesResult>("key")
 
         favoriteMovieViewModel = ViewModelProvider(this)[FavoriteViewModel::class.java]
         serieListViewModel = ViewModelProvider(this)[MovieListViewModel::class.java]
 
-        checkFavoriteGame(serieResult!!.id)
+        checkFavoriteGame(seriesResult!!.id)
 
-        Picasso.get().load("https://image.tmdb.org/t/p/w500" + serieResult.backdrop_path)
+        Picasso.get().load("https://image.tmdb.org/t/p/w500" + seriesResult.backdrop_path)
             .into(imgItem)
-        gameName.text = serieResult.name
-        releaseDate.text = "Released Date - " + serieResult.first_air_date
-        metacriticRate.text = "Rate - " + serieResult.vote_average
-        gameDescription.text = serieResult.overview
+        gameName.text = seriesResult.name
+        releaseDate.text = "Released Date - " + seriesResult.first_air_date
+        metacriticRate.text = "Rate - " + seriesResult.vote_average
+        gameDescription.text = seriesResult.overview
 
         GlobalScope.launch {
             networkCall()
@@ -46,16 +46,16 @@ class SerieDetail : AppCompatActivity() {
 
         button_detail_add_favorite.setOnClickListener {
             val temp = FavoriteMovieEntity(
-                serieResult.id,
+                seriesResult.id,
                 "serie",
-                serieResult.name,
-                serieResult.overview,
-                serieResult.first_air_date,
-                serieResult.poster_path,
-                serieResult.vote_average,
-                serieResult.backdrop_path,
+                seriesResult.name,
+                seriesResult.overview,
+                seriesResult.first_air_date,
+                seriesResult.poster_path,
+                seriesResult.vote_average,
+                seriesResult.backdrop_path,
 
-            )
+                )
             if (button_detail_add_favorite.isSelected) {
                 button_detail_add_favorite.isSelected = false
                 favoriteMovieViewModel.deleteFavoriteMovieDetail(temp)
@@ -72,12 +72,12 @@ class SerieDetail : AppCompatActivity() {
         }
 
 
-        serieListViewModel.getSimilarShows(serieResult.id.toString())?.observe(this, { it ->
+        serieListViewModel.getSimilarShows(seriesResult.id.toString())?.observe(this, { it ->
 
             adapterMoreRecyclerView = SeriesSimilarShowAdapter(
                 it,
                 object : SeriesSimilarShowAdapter.OnClickListener {
-                    override fun onItemClick(position: SerieResult) {
+                    override fun onItemClick(position: SeriesResult) {
                         val intent = Intent(this@SerieDetail, SerieDetail::class.java)
                         intent.putExtra("key", position)
                         startActivity(intent)

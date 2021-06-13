@@ -4,21 +4,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.nomadapps.watchlist.model.MovieModel
-import com.nomadapps.watchlist.model.Result
-import com.nomadapps.watchlist.model.SerieModel
-import com.nomadapps.watchlist.model.SerieResult
+import com.nomadapps.watchlist.model.SeriesModel
+import com.nomadapps.watchlist.model.SeriesResult
 import com.nomadapps.watchlist.view.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.custom_row_design_more.view.*
 
 class SeriesSimilarShowAdapter(
-    private val items: SerieModel,
+    private val items: SeriesModel,
     private val onClickListenerCategory: OnClickListener
 ) : RecyclerView.Adapter<SeriesSimilarShowAdapter.ViewHolder>() {
 
     interface OnClickListener {
-        fun onItemClick(position: SerieResult)
+        fun onItemClick(position: SeriesResult)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

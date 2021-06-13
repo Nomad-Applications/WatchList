@@ -40,5 +40,6 @@ class MoreLikeThisRecyclerViewAdapter(
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
     }
 }

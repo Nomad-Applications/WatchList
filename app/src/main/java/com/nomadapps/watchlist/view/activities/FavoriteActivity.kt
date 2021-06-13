@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.nomadapps.watchlist.local.FavoriteViewModel
 import com.nomadapps.watchlist.model.FavoriteMovieEntity
-import com.nomadapps.watchlist.model.SerieResult
+import com.nomadapps.watchlist.model.SeriesResult
 import com.nomadapps.watchlist.view.R
 import com.nomadapps.watchlist.view.adapters.FavoriteMovieListRecyclerViewAdapter
 import kotlinx.android.synthetic.main.activity_favorite.*
@@ -40,7 +40,7 @@ class FavoriteActivity : AppCompatActivity() {
                             startActivity(intent)
                         } else {
                             val intent = Intent(this@FavoriteActivity, SerieDetail::class.java)
-                            val temp: SerieResult = SerieResult(
+                            val temp: SeriesResult = SeriesResult(
                                 position.id,
                                 position.title,
                                 position.release_date,

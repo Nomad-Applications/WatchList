@@ -9,9 +9,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class FavoriteViewModel(application: Application) : AndroidViewModel(application) {
-
     val allFavoriteMovieDetail: LiveData<List<FavoriteMovieEntity>>
-
 
     private val repository: FavoriteRepository
 
@@ -33,6 +31,4 @@ class FavoriteViewModel(application: Application) : AndroidViewModel(application
             repository.deleteFavoriteMovieDetail(favoriteMovieEntity)
         }
     }
-
-
 }

@@ -18,7 +18,6 @@ import com.nomadapps.watchlist.viewmodel.MovieListViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MovieActivity : AppCompatActivity() {
-
     private var adapterRecyclerView: MovieListRecyclerViewAdapter? = null
     private var adapterViewPager: MovieListViewPagerAdapter? = null
     private var movieListRecyclerView: ArrayList<Result> = ArrayList()

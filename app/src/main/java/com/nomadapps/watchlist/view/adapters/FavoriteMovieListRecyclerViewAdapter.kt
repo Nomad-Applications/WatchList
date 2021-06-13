@@ -46,8 +46,10 @@ class FavoriteMovieListRecyclerViewAdapter(
         //holder.itemView.rating.text = "Rate - " + currentItem.vote_average.toString()
         //holder.itemView.date.text = "Released Date - " + currentItem.release_date
         holder.itemView.tvSearchMovieDescription.text = currentItem.overview
-        Picasso.get().load("https://image.tmdb.org/t/p/w500"+currentItem.backdrop_path).into(holder.itemView.typeImageView)
-        Picasso.get().load("https://image.tmdb.org/t/p/w500"+currentItem.poster_path).into(holder.itemView.ivSearchPoster)
+        Picasso.get().load("https://image.tmdb.org/t/p/w500" + currentItem.backdrop_path)
+            .into(holder.itemView.typeImageView)
+        Picasso.get().load("https://image.tmdb.org/t/p/w500" + currentItem.poster_path)
+            .into(holder.itemView.ivSearchPoster)
 
         holder.itemView.rowLayoutList.setOnClickListener {
             onClickListener.onItemClick(currentItem)

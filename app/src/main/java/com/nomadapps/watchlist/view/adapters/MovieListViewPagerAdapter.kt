@@ -4,11 +4,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.custom_viewpager_design.view.*
-import kotlin.collections.ArrayList
 import com.nomadapps.watchlist.model.Result
 import com.nomadapps.watchlist.view.R
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.custom_viewpager_design.view.*
 
 class MovieListViewPagerAdapter(
     private var items: ArrayList<Result>,
@@ -38,7 +37,8 @@ class MovieListViewPagerAdapter(
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = movieList[position]
-        Picasso.get().load("https://image.tmdb.org/t/p/w500"+currentItem.backdrop_path).into(holder.itemView.imageView)
+        Picasso.get().load("https://image.tmdb.org/t/p/w500" + currentItem.backdrop_path)
+            .into(holder.itemView.imageView)
         holder.itemView.movieBannerTextView.text = currentItem.title
 
 

@@ -4,22 +4,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.nomadapps.watchlist.model.Result
-import com.nomadapps.watchlist.model.SerieResult
+import com.nomadapps.watchlist.model.SeriesResult
 import com.nomadapps.watchlist.view.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.custom_viewpager_design.view.*
 
 class SerieListViewPagerAdapter(
-    private var items: ArrayList<SerieResult>,
+    private var items: ArrayList<SeriesResult>,
     val onClickListener: OnClickListener
 ) : RecyclerView.Adapter<SerieListViewPagerAdapter.MyViewHolder>() {
 
     interface OnClickListener {
-        fun onItemClick(position: SerieResult)
+        fun onItemClick(position: SeriesResult)
     }
 
-    var serieList = ArrayList<SerieResult>()
+    var serieList = ArrayList<SeriesResult>()
 
     init {
         serieList = items

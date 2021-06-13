@@ -7,11 +7,10 @@ import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.custom_row_design.view.*
-import kotlin.collections.ArrayList
 import com.nomadapps.watchlist.model.Result
 import com.nomadapps.watchlist.view.R
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.custom_row_design.view.*
 
 class MovieListRecyclerViewAdapter(
     private var items: ArrayList<Result>,
@@ -45,8 +44,10 @@ class MovieListRecyclerViewAdapter(
         //holder.itemView.rating.text = "Rate - " + currentItem.vote_average
         //holder.itemView.date.text = "Released Date - " + currentItem.release_date
         holder.itemView.tvSearchMovieDescription.text = currentItem.overview
-        Picasso.get().load("https://image.tmdb.org/t/p/w500"+currentItem.backdrop_path).into(holder.itemView.typeImageView)
-        Picasso.get().load("https://image.tmdb.org/t/p/w500"+currentItem.poster_path).into(holder.itemView.ivSearchPoster)
+        Picasso.get().load("https://image.tmdb.org/t/p/w500" + currentItem.backdrop_path)
+            .into(holder.itemView.typeImageView)
+        Picasso.get().load("https://image.tmdb.org/t/p/w500" + currentItem.poster_path)
+            .into(holder.itemView.ivSearchPoster)
         holder.itemView.rowLayoutList.setOnClickListener {
             onClickListener.onItemClick(currentItem)
 

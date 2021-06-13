@@ -4,7 +4,6 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.nomadapps.watchlist.api.ApiClient
 import com.nomadapps.watchlist.model.MovieDetail
-import com.nomadapps.watchlist.model.SerieModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

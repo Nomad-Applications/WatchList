@@ -121,6 +121,7 @@ class DetailActivity : AppCompatActivity() {
 
         })
     }
+
     override fun onBackPressed() {
         super.onBackPressed()
         val intent = Intent(this@DetailActivity, MovieActivity::class.java)

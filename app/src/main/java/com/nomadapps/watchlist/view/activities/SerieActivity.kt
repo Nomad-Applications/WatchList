@@ -1,16 +1,16 @@
 package com.nomadapps.watchlist.view.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.nomadapps.watchlist.model.SerieModel
-import com.nomadapps.watchlist.model.SerieResult
+import com.nomadapps.watchlist.model.SeriesModel
+import com.nomadapps.watchlist.model.SeriesResult
 import com.nomadapps.watchlist.view.R
 import com.nomadapps.watchlist.view.adapters.SerieListRecyclerViewAdapter
 import com.nomadapps.watchlist.view.adapters.SerieListViewPagerAdapter
@@ -21,8 +21,8 @@ import kotlinx.android.synthetic.main.activity_serie.*
 class SerieActivity : AppCompatActivity() {
     private var adapterRecyclerView: SerieListRecyclerViewAdapter? = null
     private var adapterViewPager: SerieListViewPagerAdapter? = null
-    private var serieListRecyclerView: ArrayList<SerieResult> = ArrayList()
-    private var serieListViewPager: ArrayList<SerieResult> = ArrayList()
+    private var seriesListRecyclerView: ArrayList<SeriesResult> = ArrayList()
+    private var seriesListViewPager: ArrayList<SeriesResult> = ArrayList()
 
     private lateinit var serieListViewModel: MovieListViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,13 +36,13 @@ class SerieActivity : AppCompatActivity() {
 
     }
     private fun fetchGameList() {
-        serieListViewModel.getSerieList()!!.observe(this, Observer<SerieModel> { serielist ->
-            if (serieListRecyclerView.isEmpty()) {
+        serieListViewModel.getSerieList()!!.observe(this, Observer<SeriesModel> { serielist ->
+            if (seriesListRecyclerView.isEmpty()) {
                 for (i in serielist.results.indices) {
                     if (i < 3) {
-                        serieListViewPager.add(serielist.results[i])
+                        seriesListViewPager.add(serielist.results[i])
                     } else {
-                        serieListRecyclerView.add(serielist.results[i])
+                        seriesListRecyclerView.add(serielist.results[i])
                     }
                 }
             }
@@ -86,9 +86,9 @@ class SerieActivity : AppCompatActivity() {
 
     private fun setRecylcerViewAdapter() {
         adapterRecyclerView = SerieListRecyclerViewAdapter(
-            serieListRecyclerView,
+            seriesListRecyclerView,
             object : SerieListRecyclerViewAdapter.OnClickListener {
-                override fun onItemClick(position: SerieResult) {
+                override fun onItemClick(position: SeriesResult) {
                     val intent = Intent(this@SerieActivity, SerieDetail::class.java)
                     intent.putExtra("key", position)
                     startActivity(intent)
@@ -99,9 +99,9 @@ class SerieActivity : AppCompatActivity() {
 
     private fun setViewPagerAdapter() {
         adapterViewPager = SerieListViewPagerAdapter(
-            serieListViewPager,
+            seriesListViewPager,
             object : SerieListViewPagerAdapter.OnClickListener {
-                override fun onItemClick(position: SerieResult) {
+                override fun onItemClick(position: SeriesResult) {
                     val intent = Intent(this@SerieActivity, SerieDetail::class.java)
                     intent.putExtra("key", position)
                     startActivity(intent)
