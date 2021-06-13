@@ -131,7 +131,7 @@ class DetailActivity : AppCompatActivity() {
             startActivity(intent)
             overridePendingTransition(0, 0)
         } else {
-            val intent = Intent(this@DetailActivity, SerieActivity::class.java)
+            val intent = Intent(this@DetailActivity, MovieActivity::class.java)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
