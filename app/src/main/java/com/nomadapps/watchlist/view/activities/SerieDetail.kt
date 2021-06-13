@@ -18,15 +18,16 @@ import kotlinx.android.synthetic.main.activity_serie_detail.*
 import kotlinx.coroutines.*
 
 class SerieDetail : AppCompatActivity() {
-
     private lateinit var favoriteMovieViewModel: FavoriteViewModel
     private lateinit var serieListViewModel: MovieListViewModel
     private var adapterMoreRecyclerView: SeriesSimilarShowAdapter? = null
+    var come: String? = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_serie_detail)
         val seriesResult: SeriesResult? = intent.getParcelableExtra<SeriesResult>("key")
+        come = intent.getStringExtra("come")
 
         favoriteMovieViewModel = ViewModelProvider(this)[FavoriteViewModel::class.java]
         serieListViewModel = ViewModelProvider(this)[MovieListViewModel::class.java]
@@ -120,8 +121,15 @@ class SerieDetail : AppCompatActivity() {
     }
     override fun onBackPressed() {
         super.onBackPressed()
-        val intent = Intent(this@SerieDetail, SerieActivity::class.java)
-        startActivity(intent)
-        overridePendingTransition(0, 0)
+        if (come == "Favorite") {
+            val intent = Intent(this@SerieDetail, FavoriteActivity::class.java)
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+        } else {
+            val intent = Intent(this@SerieDetail, SerieActivity::class.java)
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+        }
+
     }
 }

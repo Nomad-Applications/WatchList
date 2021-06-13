@@ -36,6 +36,7 @@ class FavoriteActivity : AppCompatActivity() {
                     override fun onItemClick(position: FavoriteMovieEntity) {
                         if (position.type == "movie") {
                             val intent = Intent(this@FavoriteActivity, DetailActivity::class.java)
+                            intent.putExtra("come", "Favorite")
                             intent.putExtra("key", position.id.toString())
                             startActivity(intent)
                         } else {
@@ -49,6 +50,7 @@ class FavoriteActivity : AppCompatActivity() {
                                 position.backdrop_path,
                                 position.overview
                             )
+                            intent.putExtra("come", "Favorite")
                             intent.putExtra("key", temp)
                             startActivity(intent)
                         }

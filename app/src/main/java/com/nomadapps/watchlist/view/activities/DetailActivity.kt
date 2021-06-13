@@ -26,11 +26,13 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var favoriteMovieViewModel: FavoriteViewModel
     private lateinit var movieListViewModel: MovieListViewModel
     private var adapterMoreRecyclerView: MoreLikeThisRecyclerViewAdapter? = null
+    var come: String? = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_acitivity)
         val id: String? = intent.getStringExtra("key")
+        come = intent.getStringExtra("come")
         favoriteMovieViewModel = ViewModelProvider(this)[FavoriteViewModel::class.java]
         movieDetailViewModel = ViewModelProvider(this)[MovieDetailViewModel::class.java]
         movieListViewModel = ViewModelProvider(this)[MovieListViewModel::class.java]
@@ -124,8 +126,15 @@ class DetailActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        val intent = Intent(this@DetailActivity, MovieActivity::class.java)
-        startActivity(intent)
-        overridePendingTransition(0, 0)
+        if (come == "Favorite") {
+            val intent = Intent(this@DetailActivity, FavoriteActivity::class.java)
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+        } else {
+            val intent = Intent(this@DetailActivity, SerieActivity::class.java)
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+        }
+
     }
 }
